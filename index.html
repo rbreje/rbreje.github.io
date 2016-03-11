@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<style type="text/css">
+			html { height: 100% }
+			body { height: 100%; margin: 0; padding: 0 }
+			#mapDiv { height: 97% }
+			#buttons { height: 3%; text-align: center }
+		</style>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaJA0pAa4DFkamcgMLYdGzJgwMUsncWBo">
+		
+		</script>
+		<script type="text/javascript">
+			function init(){
+				var mapOptions = { 
+					center: new google.maps.LatLng(46.774146,23.613256), 
+					zoom: 15,
+					disableDefaultUI: true,
+					zoomControl: true,
+					scaleControl: true,
+					streetViewControl: true,
+					rotateControl: true,
+					mapTypeControl: false,
+					//mapTypeControlOptions: {
+					//	mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.TERRAIN, google.maps.MapTypeId.SATELLITE, google.maps.MapTypeId.HYBRID],
+					//	style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+					//},
+					fullscreenControl: true
+				};
+				var map = new google.maps.Map(document.getElementById("mapDiv"), mapOptions);
+				addButtons(map);
+				setHome(map);
+			}
+			function setHome(map){
+				var centerMarker = new google.maps.Marker({icon: "https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xat1/v/t1.0-9/11986342_965841856823875_5648442630976976835_n.jpg?oh=88323a23918f9987bee84b80c47e5143&oe=57606776&__gda__=1464937385_759f278a345893ea340725e6e34c6477", position: new google.maps.LatLng(46.774974,23.613221), map: map, title:"Home, Sweet Home"});
+				var centerIulius = new google.maps.Marker({position: new google.maps.LatLng(46.771000,23.628900), map: map, title:"Julius"});
+			}
+			function addButtons(map){
+				document.getElementById('btnTerrain').addEventListener('click',function(){map.setMapTypeId(google.maps.MapTypeId.TERRAIN);});
+				document.getElementById('btnRoadmap').addEventListener('click',function(){map.setMapTypeId(google.maps.MapTypeId.ROADMAP);});
+				document.getElementById('btnSatellite').addEventListener('click',function(){map.setMapTypeId(google.maps.MapTypeId.SATELLITE);});
+				document.getElementById('btnHybrid').addEventListener('click',function(){map.setMapTypeId(google.maps.MapTypeId.HYBRID);});
+			}
+			google.maps.event.addDomListener(window, "load", init);
+		</script>
+	</head>
+	<body>
+	<div id="buttons">
+		<button id="btnTerrain">Terrain</button>
+		<button id="btnRoadmap">Roadmap</button>
+		<button id="btnSatellite">Satellite</button>
+		<button id="btnHybrid">Hybrid</button>
+	</div>
+	<div id="mapDiv">
+	
+	</div>
+	</body>
+</html>
