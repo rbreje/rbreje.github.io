@@ -33,7 +33,8 @@
 				setHome(map);
 			}
 			function setHome(map){
-				var centerMarker = new google.maps.Marker({icon: "https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xat1/v/t1.0-9/11986342_965841856823875_5648442630976976835_n.jpg?oh=88323a23918f9987bee84b80c47e5143&oe=57606776&__gda__=1464937385_759f278a345893ea340725e6e34c6477", position: new google.maps.LatLng(46.774974,23.613221), map: map, title:"Home, Sweet Home"});
+				//var centerMarker = new google.maps.Marker({icon: "https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xat1/v/t1.0-9/11986342_965841856823875_5648442630976976835_n.jpg?oh=88323a23918f9987bee84b80c47e5143&oe=57606776&__gda__=1464937385_759f278a345893ea340725e6e34c6477", position: new google.maps.LatLng(46.774974,23.613221), map: map, title:"Home, Sweet Home"});
+				var centerMarker = new google.maps.Marker({position: new google.maps.LatLng(46.774974,23.613221), map: map, title:"Home, Sweet Home"});
 				var centerIulius = new google.maps.Marker({position: new google.maps.LatLng(46.771000,23.628900), map: map, title:"Julius"});
 			}
 			function addButtons(map){
