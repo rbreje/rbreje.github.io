@@ -15,27 +15,53 @@
 			function init(){
 				var mapOptions = { 
 					center: new google.maps.LatLng(46.774146,23.613256), 
-					zoom: 15,
+					zoom: 14,
 					disableDefaultUI: true,
 					zoomControl: true,
 					scaleControl: true,
 					streetViewControl: true,
 					rotateControl: true,
-					mapTypeControl: false,
-					//mapTypeControlOptions: {
-					//	mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.TERRAIN, google.maps.MapTypeId.SATELLITE, google.maps.MapTypeId.HYBRID],
-					//	style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
-					//},
 					fullscreenControl: true
 				};
 				var map = new google.maps.Map(document.getElementById("mapDiv"), mapOptions);
 				addButtons(map);
-				setHome(map);
+				drawMarkers(map);
+				drawEditablePolygon(map);
 			}
-			function setHome(map){
+			function drawMarkers(map){
 				//var centerMarker = new google.maps.Marker({icon: "https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xat1/v/t1.0-9/11986342_965841856823875_5648442630976976835_n.jpg?oh=88323a23918f9987bee84b80c47e5143&oe=57606776&__gda__=1464937385_759f278a345893ea340725e6e34c6477", position: new google.maps.LatLng(46.774974,23.613221), map: map, title:"Home, Sweet Home"});
 				var centerMarker = new google.maps.Marker({position: new google.maps.LatLng(46.774974,23.613221), map: map, title:"Home, Sweet Home"});
 				var centerIulius = new google.maps.Marker({position: new google.maps.LatLng(46.771000,23.628900), map: map, title:"Julius"});
+				//var zoneOne = new google.maps.Circle({map: map, center: new google.maps.LatLng(46.774974,23.613221), fillColor: "#92D050", fillOpacity: 0.0, strokeColor: "#FF0000", strokeOpacity: 0.8, strokeWeight: 2});
+				//var zoneTwo = new google.maps.Circle({map: map, center: new google.maps.LatLng(46.774974,23.613221), fillColor: "#92D050", fillOpacity: 0.0, strokeColor: "#FF0000", strokeOpacity: 0.8, strokeWeight: 2});
+				//var zoneThree = new google.maps.Circle({map: map, center: new google.maps.LatLng(46.774974,23.613221), fillColor: "#92D050", fillOpacity: 0.0, strokeColor: "#FF0000", strokeOpacity: 0.8, strokeWeight: 2});
+				//var zoneFour = new google.maps.Circle({map: map, center: new google.maps.LatLng(46.774974,23.613221), fillColor: "#92D050", fillOpacity: 0.6, strokeColor: "#FF0000", strokeOpacity: 0.8, strokeWeight: 2});
+				//zoneOne.setRadius(100);
+				//zoneTwo.setRadius(250);
+				//zoneThree.setRadius(500);
+				//zoneFour.setRadius(2000);
+			}
+			function drawEditablePolygon(map){
+				var natureCoords  = [
+					new google.maps.LatLng(46.774974,23.613221),
+					new google.maps.LatLng(46.774474,23.612221),
+					new google.maps.LatLng(46.774674,23.613523),
+					new google.maps.LatLng(46.775974,23.613221),
+					new google.maps.LatLng(46.776974,23.614221),
+					new google.maps.LatLng(46.774924,23.613241),
+				];
+				
+				var natureArea = new google.maps.Polygon({
+					path: natureCoords,
+					fillColor: "#92D050", 
+					fillOpacity: 0.6, 
+					strokeColor: "#FF0000", 
+					strokeOpacity: 0.8, 
+					strokeWeight: 2,
+					editable: true
+				});
+				
+				natureArea.setMap(map);
 			}
 			function addButtons(map){
 				document.getElementById('btnTerrain').addEventListener('click',function(){map.setMapTypeId(google.maps.MapTypeId.TERRAIN);});
