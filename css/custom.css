@@ -1,0 +1,4 @@
+html { height: 100% }
+			body { height: 100%; margin: 0; padding: 0 }
+			#mapDiv { height: 97% }
+			#buttons { height: 3%; text-align: center }
